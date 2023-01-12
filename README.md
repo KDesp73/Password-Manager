@@ -3,6 +3,23 @@
 
 A command line program for managing passwords writen in Java, with the use of Microsoft Access Database.
 
+## Dependencies
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>net.sf.ucanaccess</groupId>
+        <artifactId>ucanaccess</artifactId>
+        <version>4.0.4</version>
+    </dependency>
+</dependencies>
+```
+
+## Clone
+
+```bash
+git clone https://github.com/KDesp73/Java-Database-Methods
+```
 
 ## Contributing
 
