@@ -1,7 +1,7 @@
 
 # Password Manager
 
-A brief description of what this project does and who it's for
+A command line program for managing passwords writen in Java, with the use of Microsoft Access Database.
 
 
 ## Contributing
