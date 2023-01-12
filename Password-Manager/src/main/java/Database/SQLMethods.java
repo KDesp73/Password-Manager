@@ -58,7 +58,7 @@ public class SQLMethods {
                         return -1;
                 }
 
-                String query = "DELETE FROM " + Table + " WHERE " + Column + " = \"" + Value + "\"";
+                String query = "DELETE FROM " + Table + " WHERE " + Column + " = \'" + Value + "\'";
 
                 s.executeUpdate(query);
                 System.out.println("Record deleted");
@@ -78,7 +78,7 @@ public class SQLMethods {
         public static ArrayList<String> SELECT(Statement s, String Table, String Column, String Value) throws SQLException {
                 ArrayList<String> list = new ArrayList<>();
 
-                String query = "SELECT " + Value + " FROM " + Table + " WHERE " + Column + "= \"" + Value + "\"";
+                String query = "SELECT " + Value + " FROM " + Table + " WHERE " + Column + "= \'" + Value + "\'";
                 ResultSet rs = s.executeQuery(query);
 
                 while (rs.next()) {

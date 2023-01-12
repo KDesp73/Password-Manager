@@ -5,6 +5,8 @@ import Database.SQLMethods;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Credentials {
         private static boolean entered = false;
@@ -33,6 +35,16 @@ public class Credentials {
         public static String[] register() {
                 System.out.print("Pick a username: ");
                 String username = UserInput.getString();
+                
+                try {
+                        if(SQLMethods.valueExists(new Database().getStatement(), "Login", "Username", username)){
+                                System.out.println("Username already exists. Pick another one");
+                                register();
+                        }
+                } catch (SQLException ex) {
+                        Logger.getLogger(Credentials.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
                 String passTemp;
                 String password;
                 do {

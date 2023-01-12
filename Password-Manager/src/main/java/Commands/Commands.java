@@ -1,6 +1,7 @@
 package Commands;
 
 import Main.Credentials;
+import Main.PasswordCollection;
 import Main.UserInput;
 import java.sql.SQLException;
 
@@ -17,7 +18,8 @@ public class Commands {
                 "delete",
                 "sort",
                 "search",
-                "users"
+                "users",
+                "delthis"
         };
 
         public static String[] getList() {
@@ -73,7 +75,7 @@ public class Commands {
                                         System.out.println("Please login first");
                                         matchCommands(promt());
                                 }
-                                Functions.print();
+                                Functions.print(PasswordCollection.getDBPasswords());
                                 break;
                         case "add":
                                 if (Credentials.getUser() == null) {
@@ -102,6 +104,27 @@ public class Commands {
                                         matchCommands(promt());
                                 }
                                 Functions.users();
+                                break;
+                        case "sort":
+                                if (Credentials.getUser() == null) {
+                                        System.out.println("Please login first");
+                                        matchCommands(promt());
+                                }
+                                Functions.sort();
+                                break;
+                        case "search":
+                                if (Credentials.getUser() == null) {
+                                        System.out.println("Please login first");
+                                        matchCommands(promt());
+                                }
+                                Functions.search();
+                                break;
+                        case "delthis":
+                                if (Credentials.getUser() == null) {
+                                        System.out.println("Please login first");
+                                        matchCommands(promt());
+                                }
+                                Functions.deleteAccount();
                                 break;
                         default:
                                 matchCommands(promt());
