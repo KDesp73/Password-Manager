@@ -73,7 +73,7 @@ public class Functions {
                 System.out.println("");
 
                 System.out.println("  Username                        | Password                        | Site                            ");
-                System.out.println("----------------------------------------------------------------------------------------------------");
+                System.out.println("----------------------------------+---------------------------------+-------------------------------");
 
                 for (int i = 0; i < passwords.size(); i++) {
                         System.out.println(i + 1 + ". " + passwords.get(i).getUsername() + addSpaces(passwords.get(i).getUsername(), "Username                        ") + "| " + passwords.get(i).getPassword() + addSpaces(passwords.get(i).getPassword(), "Password                         ") + "| " + passwords.get(i).getSite());
@@ -192,7 +192,7 @@ public class Functions {
         
         public static void deleteAccount(){
                 System.out.println("Are you sure you want to delete this account permanently? (y/n)");
-                System.out.println("> ");
+                System.out.print("> ");
                 String choice = UserInput.getString();
                 
                 if(!choice.equals("y")) return;
