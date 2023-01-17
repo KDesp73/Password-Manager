@@ -1,7 +1,7 @@
 
 # Password Manager
 
-A command line program for managing passwords writen in Java, with the use of Microsoft Access Database.
+A command line program for managing passwords written in Java, with the use of Microsoft Access Database.
 
 ## Dependencies
 
