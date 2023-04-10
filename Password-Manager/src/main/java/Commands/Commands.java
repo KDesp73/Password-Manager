@@ -26,7 +26,7 @@ public class Commands {
                 return list;
         }
 
-        public static String promt() {
+        public static String prompt() {
                 System.out.println("");
                 String command;
 
@@ -63,7 +63,7 @@ public class Commands {
                         case "register":
                                 if (Credentials.getUser() != null) {
                                         System.out.println("Please logout first");
-                                        matchCommands(promt());
+                                        matchCommands(prompt());
                                 }
                                 Credentials.insertCreds(Credentials.register());
                                 break;
@@ -73,63 +73,63 @@ public class Commands {
                         case "list":
                                 if (Credentials.getUser() == null) {
                                         System.out.println("Please login first");
-                                        matchCommands(promt());
+                                        matchCommands(prompt());
                                 }
                                 Functions.print(PasswordCollection.getDBPasswords());
                                 break;
                         case "add":
                                 if (Credentials.getUser() == null) {
                                         System.out.println("Please login first");
-                                        matchCommands(promt());
+                                        matchCommands(prompt());
                                 }
                                 Functions.add();
                                 break;
                         case "logout":
                                 if (Credentials.getUser() == null) {
                                         System.out.println("Please login first");
-                                        matchCommands(promt());
+                                        matchCommands(prompt());
                                 }
                                 Credentials.logout();
                                 break;
                         case "delete":
                                 if (Credentials.getUser() == null) {
                                         System.out.println("Please login first");
-                                        matchCommands(promt());
+                                        matchCommands(prompt());
                                 }
                                Functions.delete();
                                 break;
                         case "users":
                                 if (Credentials.getUser() == null) {
                                         System.out.println("Please login first");
-                                        matchCommands(promt());
+                                        matchCommands(prompt());
                                 }
                                 Functions.users();
                                 break;
                         case "sort":
                                 if (Credentials.getUser() == null) {
                                         System.out.println("Please login first");
-                                        matchCommands(promt());
+                                        matchCommands(prompt());
                                 }
                                 Functions.sort();
                                 break;
                         case "search":
                                 if (Credentials.getUser() == null) {
                                         System.out.println("Please login first");
-                                        matchCommands(promt());
+                                        matchCommands(prompt());
                                 }
                                 Functions.search();
                                 break;
                         case "delthis":
                                 if (Credentials.getUser() == null) {
                                         System.out.println("Please login first");
-                                        matchCommands(promt());
+                                        matchCommands(prompt());
                                 }
                                 Functions.deleteAccount();
                                 break;
                         default:
-                                matchCommands(promt());
+                                matchCommands(prompt());
                 }
-                matchCommands(promt());
+                matchCommands(prompt());
         }
 
         
