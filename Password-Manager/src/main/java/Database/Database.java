@@ -14,6 +14,12 @@ public class Database {
         private Statement statement;
 
         public Database() throws SQLException {
+                try{
+                        Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+                }catch(ClassNotFoundException e) {
+                }
+
+
                 conn = DriverManager.getConnection(url);
                 statement = conn.createStatement();
         }
