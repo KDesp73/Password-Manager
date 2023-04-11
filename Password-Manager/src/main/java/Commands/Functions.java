@@ -63,11 +63,11 @@ public class Functions {
                 System.out.print("-------------------------------");
                 System.out.println("Search for a password");
 
-                System.out.print(Commands.getList()[11]);
-                System.out.print("-------------------------------");
-                System.out.println("Print registered users");
+                // System.out.print(Commands.getList()[11]);
+                // System.out.print("-------------------------------");
+                // System.out.println("Print registered users");
 
-                System.out.print(Commands.getList()[12]);
+                System.out.print(Commands.getList()[11]);
                 System.out.print("-------------------------------");
                 System.out.println("Delete current account");
         }

@@ -19,7 +19,7 @@ public class Commands {
                         "edit",
                         "sort",
                         "search",
-                        "users",
+                        // "users",
                         "delthis"
         };
 
@@ -99,13 +99,13 @@ public class Commands {
                                 }
                                 Functions.delete();
                                 break;
-                        case "users":
-                                if (Credentials.getUser() == null) {
-                                        System.out.println("Please login first");
-                                        matchCommands(prompt());
-                                }
-                                Functions.users();
-                                break;
+                        // case "users":
+                        //         if (Credentials.getUser() == null) {
+                        //                 System.out.println("Please login first");
+                        //                 matchCommands(prompt());
+                        //         }
+                        //         Functions.users();
+                        //         break;
                         case "sort":
                                 if (Credentials.getUser() == null) {
                                         System.out.println("Please login first");
