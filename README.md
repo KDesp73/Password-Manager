@@ -7,7 +7,7 @@ A command line program for managing passwords written in Java, with the use of M
 
 1) Register
 2) Login / Logout
-3) Add / Delete records
+3) Add / Delete / Edit records
 4) Sort
 5) Search
 6) List all saved passwords
