@@ -51,6 +51,17 @@ public class SQLMethods {
         }
 
         /*===========================================================*/
+
+        public static void UPDATE(Statement s, String Table, String Column, String Value, String replaceWith) throws SQLException{
+                String query;
+                if (Value instanceof String) {
+                        query = "UPDATE " + Table + " SET " + Column + " = \'" + replaceWith + "\' WHERE " + Column + " = \'" + Value + "\'"; 
+                } else {
+                        query = "UPDATE " + Table + " SET " + Column + " = " + replaceWith + " WHERE " + Column + " = " + Value;
+                }
+
+                s.executeUpdate(query);
+        }
         
         public static int DELETE(Statement s, String Table, String Column, String Value) throws SQLException { //Deletes record
                 if (!valueExists(s, Table, Column, Value)) {

@@ -8,18 +8,19 @@ import java.sql.SQLException;
 public class Commands {
 
         private static String[] list = {
-                "help",
-                "register",
-                "login",
-                "logout",
-                "exit",
-                "list",
-                "add",
-                "delete",
-                "sort",
-                "search",
-                "users",
-                "delthis"
+                        "help",
+                        "register",
+                        "login",
+                        "logout",
+                        "exit",
+                        "list",
+                        "add",
+                        "delete",
+                        "edit",
+                        "sort",
+                        "search",
+                        "users",
+                        "delthis"
         };
 
         public static String[] getList() {
@@ -96,7 +97,7 @@ public class Commands {
                                         System.out.println("Please login first");
                                         matchCommands(prompt());
                                 }
-                               Functions.delete();
+                                Functions.delete();
                                 break;
                         case "users":
                                 if (Credentials.getUser() == null) {
@@ -126,11 +127,17 @@ public class Commands {
                                 }
                                 Functions.deleteAccount();
                                 break;
+                        case "edit":
+                                if (Credentials.getUser() == null) {
+                                        System.out.println("Please login first");
+                                        matchCommands(prompt());
+                                }
+                                Functions.edit();
+                                break;
                         default:
                                 matchCommands(prompt());
                 }
                 matchCommands(prompt());
         }
 
-        
 }

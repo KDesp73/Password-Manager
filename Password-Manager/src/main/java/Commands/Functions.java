@@ -53,22 +53,26 @@ public class Functions {
 
                 System.out.print(Commands.getList()[8]);
                 System.out.print("-------------------------------");
-                System.out.println("Print sorted list");
+                System.out.println("Edit an existing record");
 
                 System.out.print(Commands.getList()[9]);
                 System.out.print("-------------------------------");
-                System.out.println("Search for a password");
+                System.out.println("Print sorted list");
 
                 System.out.print(Commands.getList()[10]);
                 System.out.print("-------------------------------");
-                System.out.println("Print registered users");
+                System.out.println("Search for a password");
 
                 System.out.print(Commands.getList()[11]);
+                System.out.print("-------------------------------");
+                System.out.println("Print registered users");
+
+                System.out.print(Commands.getList()[12]);
                 System.out.print("-------------------------------");
                 System.out.println("Delete current account");
         }
 
-        public static void print(ArrayList<Password> passwords) throws SQLException {
+        public static void print(ArrayList<Password> passwords) {
                 System.out.println("");
                 System.out.println("");
 
@@ -159,11 +163,7 @@ public class Functions {
                 }
 
                 Collections.sort(PasswordCollection.getPasswords());
-                try {
-                        print(PasswordCollection.getPasswords());
-                } catch (SQLException ex) {
-                        Logger.getLogger(Functions.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                print(PasswordCollection.getPasswords());
         }
 
         public static void search() throws SQLException {
@@ -215,5 +215,63 @@ public class Functions {
                         Logger.getLogger(Functions.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 Credentials.logout();
+        }
+
+        public static void edit(){
+                ArrayList<Password> records = null;
+                try {
+                        records = PasswordCollection.getDBPasswords();
+                } catch (SQLException e) {
+                        e.printStackTrace();
+                }
+                
+                print(records);
+                System.out.println("");
+                
+                int choice = -1;
+                do{
+                        System.out.print("Select record to edit: ");
+                        choice = UserInput.getInteger();
+                } while (choice < 1 || choice > records.size());
+
+
+                System.out.println("\nEdit info (press Enter to leave as is)\n");
+                System.out.print("Username: ");
+                String username = UserInput.getString();
+                System.out.print("Password: ");
+                String password = UserInput.getString();
+                System.out.print("Site: ");
+                String site = UserInput.getString();
+
+                ArrayList<String> sites = null;
+                try {
+                        sites = SQLMethods.SELECT(new Database().getStatement(), "Passwords", "Site");
+                } catch (SQLException e) {
+                        e.printStackTrace();
+                }
+
+                if(site != "" && site != "\n" && site != null && site != "\0" && !site.isEmpty()){
+                        for(String str : sites){
+                                if(str.equals(site)){
+                                        System.out.println("This site already exists");
+                                        return;
+                                }
+                        }
+                } else site = records.get(choice-1).getSite();
+
+                if(username == "" || username == "\n" || username == null || username == "\0" || username.isEmpty()) username = records.get(choice-1).getUsername(); 
+
+                if(password == "" || password == "\n" || password == null || password == "\0" || password.isEmpty()) password = records.get(choice-1).getPassword();
+
+                try {
+                        SQLMethods.UPDATE(new Database().getStatement(), "Passwords", "Username", records.get(choice-1).getUsername(), username);
+                        SQLMethods.UPDATE(new Database().getStatement(), "Passwords", "Password", records.get(choice-1).getPassword(), password);
+                        SQLMethods.UPDATE(new Database().getStatement(), "Passwords", "Site", records.get(choice-1).getSite(), site);
+
+                } catch (SQLException e) {
+                        e.printStackTrace();
+                }
+
+                System.out.println("\nRecord edited successfully");
         }
 }
